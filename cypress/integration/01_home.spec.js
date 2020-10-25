@@ -1,8 +1,8 @@
 // / <reference types="Cypress" />
 
-// go to www.zwift
-// wait for page to load
-// validate something on the page exists
+// Navigate to https://zwift.com
+// Validate the page loads.
+// Validate content of your choice is present.
 
 context('Home Page', () => {
     beforeEach(() => {
@@ -15,7 +15,7 @@ context('Home Page', () => {
     })
 
     it('Mobile - Verifies homepage', () => {
-        cy.viewport('iphone-x')
+        cy.viewport('iphone-x');
         cy.waitUntil(() => cy.get('#znv-header-open-burger').should('be.visible'));
     })
 })

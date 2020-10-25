@@ -1,8 +1,10 @@
 // / <reference types="Cypress" />
 
-// go to www.zwift
-// wait for page to load
-// validate something on the page exists
+// Navigate to https://zwift.com
+// Use the top-nav elements to reach https://zwift.com/events
+// Validate the page loads.
+// Populate the Sports, Intensities, and Start Times dropdown fields.
+// Validate events have changed. (Assume that the filters you choose may return NO events.)
 
 context('Events Scenarios', () => {
     beforeEach(() => {
@@ -13,7 +15,7 @@ context('Events Scenarios', () => {
     it('Fullscreen - Verify Events', () => {
         cy.waitUntil(() => cy.get('.znv-z-full-nav').should('be.visible'));
 
-        cy.get('.znv-d-lg-flex > [href="/events"]').click()
+        cy.get('.znv-d-lg-flex > [href="/events"]').click();
 
         cy.waitUntil(() => cy.get('div#zwift-events').should('be.visible'))
         cy.url().should('include', '/events')
@@ -39,17 +41,16 @@ context('Events Scenarios', () => {
                                 //     assert.notEqual(results, previousResults)
 
                                 //     previousResults = results
-                                //     debugger;
                                 // })
                             }
-                        })
+                        });
                     }
                 })
             }
         })
     })
 
-    xit('Mobile - Verifies Events', () => {
+    it('Mobile - Verifies Events', () => {
         cy.viewport('iphone-x')
 
         cy.waitUntil(() => cy.get('#znv-header-open-burger').should('be.visible'));
@@ -61,11 +62,11 @@ context('Events Scenarios', () => {
         });
 
         cy.waitUntil(() => cy.get('#events-header').should('be.visible'));
-        cy.url().should('include', '/events')
+        cy.url().should('include', '/events');
 
         cy.get(':nth-child(1) > .select-wrapper > #filter-location').find('option').then(types => {
             for (let type = 2; type < types.length; type++) {
-                cy.get(':nth-child(1) > .select-wrapper > #filter-location').select(types[type].label)
+                cy.get(':nth-child(1) > .select-wrapper > #filter-location').select(types[type].label);
 
                 cy.get(':nth-child(3) > .select-wrapper > #filter-location').find('option').then(types => {
                     for (let type = 2;  type < types.length; type++) {

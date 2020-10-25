@@ -3,8 +3,8 @@
     "version": "0.1.0",
     "private": true,
     "scripts": {
-        "test": "cypress run -b chrome",
-        "open": "cypress open -b chrome"
+        "test:chrome": "cypress run -b chrome",
+        "test:firefox": "cypress run -b firefox"
     },
     "dependencies": {
         "cypress": "^5.4.0",
