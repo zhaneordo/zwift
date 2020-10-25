@@ -18,7 +18,7 @@ context('Events Scenarios', () => {
         cy.get('.znv-d-lg-flex > [href="/events"]').click();
 
         cy.waitUntil(() => cy.get('div#zwift-events').should('be.visible'))
-        cy.url().should('include', '/events')
+        cy.url().should('include', '/events');
 
         cy.get(':nth-child(1) > .select-wrapper > #filter-location').find('option').then(types => {
             for (let type = 2; type < types.length; type++) {
@@ -32,16 +32,24 @@ context('Events Scenarios', () => {
                             for (let type = 2;  type < types.length; type++) {
                                 cy.get(':nth-child(4) > .select-wrapper > #filter-location').select(types[type].label)
 
-                                // need to create a validation for results
-                                // this doesnt work yet
-                                // var previousResults = []
-                                // cy.get('[style="margin-top: 30px;"]').find('div').then(results => {
-                                //     console.log('divResults', divResults)
-                                //     console.log('previousResults', previousResults)
-                                //     assert.notEqual(results, previousResults)
+                                // this doesnt work as intended
+                                var previousResults = [] 
 
-                                //     previousResults = results
-                                // })
+                                // can't do this either, can have "No results"
+                                cy.get('[style="margin-top: 30px;"]').find('div').then(results => {
+
+                                    const schedule = results.toArray()
+
+                                    console.log('schedule-length', schedule.length)
+
+                                    console.log('schedule', schedule)
+                                    // thinking is that= I can validate based on the div array
+                                    // it is possible to have multiple "No results"
+                                    assert.notEqual(schedule, previousResults)
+                                    previousResults = schedule
+
+                                    debugger
+                                })
                             }
                         });
                     }

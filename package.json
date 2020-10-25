@@ -9,6 +9,8 @@
     },
     "dependencies": {
         "cypress": "^5.4.0",
-        "cypress-wait-until": "^1.7.1"
+        "cypress-wait-until": "^1.7.1",
+        "prettier": "2.1.2",
+        "eslint": "7.10.0"
     }
 }
