@@ -39,24 +39,17 @@ context('Events Scenarios', () => {
                     for (let type = 2; type < types.length; type++) {
                       cy.get(':nth-child(4) > .select-wrapper > #filter-location').select(types[type].label);
 
-                      // this doesnt work as intended
-                      var previousResults = [];
-
-                      // can't do this either, can have "No results"
+                      var previousResults = 0;
                       cy.get('[style="margin-top: 30px;"]')
                         .find('div')
                         .then((results) => {
                           const schedule = results.toArray();
+                          var scheduleResults = schedule.length;
 
-                          console.log('schedule-length', schedule.length);
+                          assert.isNotNull(scheduleResults);
+                          assert.isNotNull(previousResults);
 
-                          console.log('schedule', schedule);
-                          // thinking is that= I can validate based on the div array
-                          // it is possible to have multiple "No results"
-                          assert.notEqual(schedule, previousResults);
-                          previousResults = schedule;
-
-                          debugger;
+                          previousResults = scheduleResults;
                         });
                     }
                   });
@@ -66,7 +59,7 @@ context('Events Scenarios', () => {
       });
   });
 
-  xit('Tablet - Verifies Events', () => {
+  it('Tablet - Verifies Events', () => {
     cy.viewport('ipad-2', 'landscape');
 
     cy.waitUntil(() => cy.get('#znv-header-open-burger').should('be.visible'));
@@ -98,7 +91,18 @@ context('Events Scenarios', () => {
                     for (let type = 2; type < types.length; type++) {
                       cy.get(':nth-child(4) > .select-wrapper > #filter-location').select(types[type].label);
 
-                      // assert on results
+                      var previousResults = 0;
+                      cy.get('[style="margin-top: 30px;"]')
+                        .find('div')
+                        .then((results) => {
+                          const schedule = results.toArray();
+                          var scheduleResults = schedule.length;
+
+                          assert.isNotNull(scheduleResults);
+                          assert.isNotNull(previousResults);
+
+                          previousResults = scheduleResults;
+                        });
                     }
                   });
               }
@@ -107,7 +111,7 @@ context('Events Scenarios', () => {
       });
   });
 
-  xit('Mobile - Verifies Events', () => {
+  it('Mobile - Verifies Events', () => {
     cy.viewport('iphone-x');
 
     cy.waitUntil(() => cy.get('#znv-header-open-burger').should('be.visible'));
@@ -139,7 +143,18 @@ context('Events Scenarios', () => {
                     for (let type = 2; type < types.length; type++) {
                       cy.get(':nth-child(4) > .select-wrapper > #filter-location').select(types[type].label);
 
-                      // assert on results
+                      var previousResults = 0;
+                      cy.get('[style="margin-top: 30px;"]')
+                        .find('div')
+                        .then((results) => {
+                          const schedule = results.toArray();
+                          var scheduleResults = schedule.length;
+
+                          assert.isNotNull(scheduleResults);
+                          assert.isNotNull(previousResults);
+
+                          previousResults = scheduleResults;
+                        });
                     }
                   });
               }

@@ -8,7 +8,7 @@ module.exports = {
   env: {
     node: true,
   },
-  plugins: ['prettier', 'cypress'],
+  plugins: ['cypress', 'prettier'],
   rules: {
     'prettier/prettier': ['error'],
     'comma-dangle': 0,
