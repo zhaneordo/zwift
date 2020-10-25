@@ -14,6 +14,11 @@ context('Home Page', () => {
         cy.waitUntil(() => cy.get('.znv-z-full-nav').should('be.visible'));
     })
 
+    it('Tablet - Verifies homepage', () => {
+        cy.viewport('ipad-2', 'landscape');
+        cy.waitUntil(() => cy.get('.znv-z-full-nav').should('be.visible'));
+    })
+
     it('Mobile - Verifies homepage', () => {
         cy.viewport('iphone-x');
         cy.waitUntil(() => cy.get('#znv-header-open-burger').should('be.visible'));

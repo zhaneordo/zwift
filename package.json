@@ -4,7 +4,8 @@
     "private": true,
     "scripts": {
         "test:chrome": "cypress run -b chrome",
-        "test:firefox": "cypress run -b firefox"
+        "test:firefox": "cypress run -b firefox",
+        "open": "cypress open"
     },
     "dependencies": {
         "cypress": "^5.4.0",
