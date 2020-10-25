@@ -8,9 +8,6 @@ context('Events Scenarios', () => {
     beforeEach(() => {
         cy.acceptCookies();
         cy.visit('');
-
-        // cy.server().route('POST', 'https://api.segment.io/v1/p').as('apiP')
-        // cy.wait('@apiP').its('status').should('be', 200)
     })
 
     it('Fullscreen - Verify Events', () => {
@@ -23,23 +20,27 @@ context('Events Scenarios', () => {
 
         cy.get(':nth-child(1) > .select-wrapper > #filter-location').find('option').then(types => {
             for (let type = 2; type < types.length; type++) {
-                const sport = types[type].label
-                // console.log('sport', sport)
                 cy.get(':nth-child(1) > .select-wrapper > #filter-location').select(types[type].label)
 
                 cy.get(':nth-child(3) > .select-wrapper > #filter-location').find('option').then(types => {
                     for (let type = 2;  type < types.length; type++) {
-
-                        const intensity = types[type].label
-                        // console.log('sport-intensity', sport, intensity)
                         cy.get(':nth-child(3) > .select-wrapper > #filter-location').select(types[type].label)
 
                         cy.get(':nth-child(4) > .select-wrapper > #filter-location').find('option').then(types => {
                             for (let type = 2;  type < types.length; type++) {
-                                const time = types[type].label
-
-                                console.log('sport-intensity-time', sport, intensity, time)
                                 cy.get(':nth-child(4) > .select-wrapper > #filter-location').select(types[type].label)
+
+                                // need to create a validation for results
+                                // this doesnt work yet
+                                // var previousResults = []
+                                // cy.get('[style="margin-top: 30px;"]').find('div').then(results => {
+                                //     console.log('divResults', divResults)
+                                //     console.log('previousResults', previousResults)
+                                //     assert.notEqual(results, previousResults)
+
+                                //     previousResults = results
+                                //     debugger;
+                                // })
                             }
                         })
                     }
@@ -48,7 +49,7 @@ context('Events Scenarios', () => {
         })
     })
 
-    it('Mobile - Verifies Events', () => {
+    xit('Mobile - Verifies Events', () => {
         cy.viewport('iphone-x')
 
         cy.waitUntil(() => cy.get('#znv-header-open-burger').should('be.visible'));
@@ -64,23 +65,17 @@ context('Events Scenarios', () => {
 
         cy.get(':nth-child(1) > .select-wrapper > #filter-location').find('option').then(types => {
             for (let type = 2; type < types.length; type++) {
-                const sport = types[type].label
-                // console.log('sport', sport)
                 cy.get(':nth-child(1) > .select-wrapper > #filter-location').select(types[type].label)
 
                 cy.get(':nth-child(3) > .select-wrapper > #filter-location').find('option').then(types => {
                     for (let type = 2;  type < types.length; type++) {
-
-                        const intensity = types[type].label
-                        // console.log('sport-intensity', sport, intensity)
                         cy.get(':nth-child(3) > .select-wrapper > #filter-location').select(types[type].label)
 
                         cy.get(':nth-child(4) > .select-wrapper > #filter-location').find('option').then(types => {
                             for (let type = 2;  type < types.length; type++) {
-                                const time = types[type].label
-
-                                console.log('sport-intensity-time', sport, intensity, time)
                                 cy.get(':nth-child(4) > .select-wrapper > #filter-location').select(types[type].label)
+
+                                // assert on results
                             }
                         })
                     }

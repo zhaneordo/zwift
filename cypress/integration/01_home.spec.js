@@ -7,11 +7,7 @@
 context('Home Page', () => {
     beforeEach(() => {
         cy.acceptCookies();
-
         cy.visit('');
-
-        // cy.server().route('POST', 'https://api.segment.io/v1/p').as('apiP')
-        // cy.wait('@apiP').its('status').should('be', 200)
     })
 
     it('Fullscreen - Verifies homepage', () => {
