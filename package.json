@@ -1,0 +1,13 @@
+{
+    "name": "zwift",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "test": "cypress run -b chrome",
+        "open": "cypress open -b chrome"
+    },
+    "dependencies": {
+        "cypress": "^5.4.0",
+        "cypress-wait-until": "^1.7.1"
+    }
+}
